@@ -148,9 +148,15 @@ Route::resource('banner', App\Http\Controllers\BannerController::class);
 Route::get('banner-status-change/{id}',[
     'uses'  => 'App\Http\Controllers\BannerController@BannerStatusChange',
     'as'    => 'banner-status-change'
+]); 
+Route::get('banner.deleteAlert/{id}',[
+    'uses'  => 'App\Http\Controllers\BannerController@bannerDeleteAlert',
+    'as'    => 'banner.deleteAlert'
 ]);
-
-
+Route::get('banner-delete/{id}',[
+    'uses'  => 'App\Http\Controllers\BannerController@bannerDelete',
+    'as'    => 'banner-delete'
+]);  
 
 
 

@@ -11,20 +11,30 @@ class Banner extends Model
     public static $banner;
 
 
-
-public static function newBanner($request)
+public static function basicInfo($request)
 {
-    self::$banner   = new Banner();
     self::$banner->header          =$request->header;
     self::$banner->description     =$request->description;
-    self::$banner->image           =imageUpload($request->file('image'),$request->header,620,340,'banner-image/');
+    if ($request->file('image')) {
+        self::$banner->image           =imageUpload($request->file('image'),$request->header,620,340,'banner-image/');
+    }
     self::$banner->button_text     =$request->button_text;
     self::$banner->button_link     =$request->button_link;
     self::$banner->save();
 }
 
+public static function newBanner($request)
+{
+    self::$banner   = new Banner();
+    self::basicInfo($request);
+}
 
 
+public static function bannerUpdate($request,$id)
+{
+    self::$banner   = Banner::find($id);
+    self::basicInfo($request);
+}
 
 
 }

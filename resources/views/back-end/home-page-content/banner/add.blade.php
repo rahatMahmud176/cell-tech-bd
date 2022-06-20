@@ -45,7 +45,7 @@
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item" href="{{ route('banner-status-change',['id'=>$item->id]) }}">{{ $item->status==1?'Pused':'Resume' }}</a>
                                                             <a class="dropdown-item" href="{{ route('banner.edit',$item->id) }}">Edit</a>
-                                                            <a class="dropdown-item" href="{{ route('slider.deleteAlert',['id'=>$item->id]) }}">Delete</a> 
+                                                            <a class="dropdown-item" href="{{ route('banner.deleteAlert',['id'=>$item->id]) }}">Delete</a> 
                                                         </div>
                                                     </div>
                                                 </td>

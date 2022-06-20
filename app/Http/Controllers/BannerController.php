@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class BannerController extends Controller
@@ -17,7 +18,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('back-end.home-page-content.banner',[
+        return view('back-end.home-page-content.banner.add',[
             'banners'   => Banner::orderBy('id','desc')->get()
         ]);
     }
@@ -83,7 +84,9 @@ public function BannerStatusChange($id)
      */
     public function edit($id)
     {
-        //
+        return view('back-end.home-page-content.banner.edit',[
+            'banner'    => Banner::find($id),
+        ]);
     }
 
     /**
@@ -95,9 +98,37 @@ public function BannerStatusChange($id)
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        DB::beginTransaction();
 
+        try {
+            if ($request->file('image')) {
+                unlink(Banner::find($id)->image);
+            }
+            Banner::bannerUpdate($request,$id); 
+            DB::commit(); 
+            Alert::success('Updated','Banner is update successfully');
+            return redirect('banner');
+
+        } catch (\Exception $e) {
+            DB::rollback(); 
+            Alert::error('Error','Something is wrong');
+        }
+    }
+    public function bannerDeleteAlert($id)
+    {
+        alert()->question('Are you sure?','You won\'t be able to revert this!')
+        ->showConfirmButton('<a href="banner-delete/'.$id.'" style="color:white">Delete</a>', '#f22e02')->toHtml()
+        ->showCancelButton('Cancel', '#aaa')->reverseButtons();
+        return redirect()->back();
+    }
+    public function bannerDelete($id)
+    {
+        $this->banner  = Banner::find($id);
+        unlink($this->banner->image);
+        $this->banner->delete();
+        Alert::error('Deleted','This Banner Parmanently Delete!');
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      *
