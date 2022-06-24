@@ -13,14 +13,16 @@ class SponeBanner extends Model
 
     public static function basicInfo($request)
     {
-        self::$sponebanner->title          =$request->title;
-        self::$sponebanner->description     =$request->description;
+        self::$sponebanner->title                   =$request->title;
+        self::$sponebanner->description             =$request->description;
         if ($request->file('image')) {
-            self::$sponebanner->image           =imageUpload($request->file('image'),$request->header,512,600,'special-offer-one-banner-image/');
+            self::$sponebanner->image               =imageUpload($request->file('image'),$request->header,512,600,'special-offer-one-banner-image/');
         }
-        self::$sponebanner->price           =$request->price;
-        self::$sponebanner->button_text     =$request->button_text;
-        self::$sponebanner->button_link     =$request->button_link;
+        self::$sponebanner->price                   =$request->price;
+        self::$sponebanner->cut_price               =$request->cut_price;
+        self::$sponebanner->discount_percentage     =$request->discount_percentage;
+        self::$sponebanner->button_text             =$request->button_text;
+        self::$sponebanner->button_link             =$request->button_link;
         self::$sponebanner->save();
     }
     

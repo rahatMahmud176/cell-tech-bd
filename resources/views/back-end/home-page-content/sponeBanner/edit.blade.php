@@ -46,6 +46,14 @@
                      <input class="form-control" required maxlength="10" type="text" name="price" id="" value="{{ $banner->price }}">
                 </div>
                 <div class="form-group">
+                    <label class="control-label">Cut Price:- </label>
+                     <input class="form-control" required maxlength="10" type="text" name="cut_price" id="" value="{{ $banner->cut_price }}">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Discount Percentage:- </label>
+                     <input class="form-control" required max="100" type="number" name="discount_percentage" id="" value="{{ $banner->discount_percentage }}">
+                </div>
+                <div class="form-group">
                     <label class="control-label">Button text:- </label>
                      <input class="form-control" required maxlength="10" type="text" name="button_text" id="" value="{{ $banner->button_text }}">
                 </div>

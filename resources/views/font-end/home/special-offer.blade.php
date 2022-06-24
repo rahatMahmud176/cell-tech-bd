@@ -78,8 +78,8 @@
     <div class="col-lg-4 col-md-12 col-12">
     <div class="offer-content">
     <div class="image">
-    <img src="{{ asset('/') }}font-end/assets/images/offer/offer-image.jpg" alt="#">
-    <span class="sale-tag">-50%</span>
+    <img src="{{ asset($item->image) }}" alt="#">
+    <span class="sale-tag">-{{$item->discount_percentage}}%</span>
     </div>
     <div class="text">
     <h2><a href="product-grids.html">{{ $item->title }}</a></h2>
@@ -93,6 +93,7 @@
     </ul>
     <div class="price">
     <span>৳:{{ $item->price }}/-</span> 
+    <span class="discount-price">৳:{{ $item->cut_price }}/-</span> 
     </div>
     <p>{{$item->description}}</p>
     </div>

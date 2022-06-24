@@ -106,6 +106,14 @@
                      <input class="form-control" required maxlength="10" type="text" name="price" id="">
                 </div>
                 <div class="form-group">
+                    <label class="control-label">Cut Price:- </label>
+                     <input class="form-control" required maxlength="10" type="text" name="cut_price" id="">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Discount Percentage:- </label>
+                     <input class="form-control" required max="100" type="number" name="discount_percentage" id="">
+                </div>
+                <div class="form-group">
                     <label class="control-label">Button text:- </label>
                      <input class="form-control" required maxlength="10" type="text" name="button_text" id="">
                 </div>

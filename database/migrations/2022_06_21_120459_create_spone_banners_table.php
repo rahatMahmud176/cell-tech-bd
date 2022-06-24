@@ -19,8 +19,10 @@ return new class extends Migration
             $table->text('description');
             $table->text('image'); 
             $table->float('price', 10,2);
+            $table->float('cut_price', 10,2);
             $table->string('button_text');
             $table->text('button_link');
+            $table->text('discount_percentage'); 
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
