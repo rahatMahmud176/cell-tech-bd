@@ -18,6 +18,8 @@
                         <li><a href="{{ route('slider-banner.index') }}">slider banner</a></li>
                         <li><a href="{{ route('delevary-agent.index') }}">Delevary Agent</a></li>
                         <li><a href="{{ route('banner.index') }}">Banner Manage</a></li>
+                        <li><a href="{{ route('sponeBanner.index') }}">Special Offer Banner-1</a></li>
+                        <li><a href="{{ route('spoBanner.index') }}">Special Offer Banner-2</a></li>
                     </ul>
                 </li> 
                 <li>

@@ -160,11 +160,46 @@ Route::get('banner-delete/{id}',[
 
 
 
+Route::resource('spoBanner', App\Http\Controllers\specialOfferBannerController::class); 
+Route::get('spoBanner-status-change/{id}',[
+    'uses'  => 'App\Http\Controllers\specialOfferBannerController@spoBannerStatusChange',
+    'as'    => 'spoBanner-status-change'
+]); 
+Route::get('spoBanner.deleteAlert/{id}',[
+    'uses'  => 'App\Http\Controllers\specialOfferBannerController@bannerDeleteAlert',
+    'as'    => 'spoBanner.deleteAlert'
+]);
+Route::get('spoBanner-delete/{id}',[
+    'uses'  => 'App\Http\Controllers\specialOfferBannerController@bannerDelete',
+    'as'    => 'spoBanner-delete'
+]);  
+
+
+
+Route::resource('sponeBanner', App\Http\Controllers\sponeBannerController::class); 
+Route::get('sponeBanner-status-change/{id}',[
+    'uses'  => 'App\Http\Controllers\sponeBannerController@sponeBannerStatusChange',
+    'as'    => 'sponeBanner-status-change'
+]); 
+Route::get('sponeBanner.deleteAlert/{id}',[
+    'uses'  => 'App\Http\Controllers\sponeBannerController@bannerDeleteAlert',
+    'as'    => 'sponeBanner.deleteAlert'
+]);
+Route::get('sponeBanner-delete/{id}',[
+    'uses'  => 'App\Http\Controllers\sponeBannerController@bannerDelete',
+    'as'    => 'sponeBanner-delete'
+]);  
+
+
+
+
+
+
+
+
 
 
 });
-
-
 // =======================FontEnd Routes============================
 
 Route::get('/',[
