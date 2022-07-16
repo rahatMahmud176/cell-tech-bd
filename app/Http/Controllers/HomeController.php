@@ -21,7 +21,7 @@ class HomeController extends Controller
            'sliderBanner'           => SliderBanner::where('status',1)->first(),
            'delevaryAgents'         => DelevaryAgent::all(),
            'categories'             => Category::where('status',1)->take(6)->get(),
-           'trandingProducts'       => Product::where('status',1)->orderBy('hit_count','desc')->get(),
+           'trandingProducts'       => Product::where('status',1)->orderBy('hit_count','desc')->get()->take('8'),
            'banners'                => Banner::where('status',1)->get(),
            'spoBanners'             => SpecialOfferBanner::where('status',1)->get(),
            'sponeBanners'           => SponeBanner::where('status',1)->get(),

@@ -43,7 +43,10 @@ public function productColors()
 {
      return $this->hasMany('App\Models\ProductColor','product_id');
 }
-
+public function otherImages()
+{
+     return $this->hasMany('App\Models\ProductImages','product_id');
+}
 public function productSizes()
 {
      return $this->hasMany('App\Models\ProductSize','product_id');
@@ -53,7 +56,11 @@ public function category( )
 {
      return $this->belongsTo('App\Models\Category','category_id');
 }
+public function brand()
+{
+     return $this->belongsTo('App\Models\Brand','brand_id');
 
+}
 
 
 }

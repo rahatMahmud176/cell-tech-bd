@@ -23,15 +23,15 @@
      <div class="product-info">
     <span class="category">{{ $item->category->title }}</span>
     <h4 class="title">
-    <a href="product-grids.html">{{ $item->title }}</a>
+    <a href="{{ route('product-details',['id'=>$item->id]) }}">{{ $item->title }}</a>
     </h4>
     <ul class="review">
     <li><i class="lni lni-star-filled"></i></li>
     <li><i class="lni lni-star-filled"></i></li>
     <li><i class="lni lni-star-filled"></i></li>
     <li><i class="lni lni-star-filled"></i></li>
-    <li><i class="lni lni-star"></i></li>
-    <li><span>4.0 Review(s)</span></li>
+    <li><i class="lni lni-star-filled"></i></li>
+    <li><span>5.0 Review(s)</span></li>
     </ul>
     <div class="price">
     <span> ৳:{{ $item->sell_price }}/-</span>

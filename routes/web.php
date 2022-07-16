@@ -207,6 +207,15 @@ Route::get('/',[
     'as'       => '/'
 ]);
 
+Route::get('product-details/{id}',[
+    'uses'     =>'App\Http\Controllers\ProductDetailsController@ProductDetails',
+    'as'       => 'product-details'
+]); 
+Route::post('add-to-cart',[
+    'uses'     =>'App\Http\Controllers\ProductDetailsController@addToCart',
+    'as'       => 'add-to-cart'
+]);
+
 
 Route::get('/image', function() {
     
