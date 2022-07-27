@@ -18,7 +18,7 @@ class HomeController extends Controller
    {
         return view('font-end.home.home',[
            'sliders'                => Slider::all(),
-           'sliderBanner'           => SliderBanner::where('status',1)->first(),
+           'sliderBanners'           => SliderBanner::where('status',1)->get(),
            'delevaryAgents'         => DelevaryAgent::all(),
            'categories'             => Category::where('status',1)->take(6)->get(),
            'trandingProducts'       => Product::where('status',1)->orderBy('hit_count','desc')->get()->take('8'),

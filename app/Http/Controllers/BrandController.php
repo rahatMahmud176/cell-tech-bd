@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class BrandController extends Controller
 {
+    public $brand ;
     /**
      * Display a listing of the resource.
      *
@@ -95,12 +97,28 @@ class BrandController extends Controller
     public function brandDelete($id)
     {
 
-        $this->agent = Brand::find($id);
-        unlink($this->agent->image);
-        $this->agent->delete();
-        Alert::error('Dleted','Deleted Delevary Agent!');
+       
+
+
+    DB::beginTransaction();
+    $this->brand = Brand::find($id);
+    if ($this->brand->image != 'no-image') {
+        unlink($this->brand->image);
+    } 
+        $this->brand->delete();
+        Alert::error('Dleted','Deleted This brand!');
         return redirect()->back();
+        
+    try {
+    
+    } catch (\Exception $e) {
+        DB::rollback();
+        Alert::error('Error','Something is error!');
+        return redirect()->back(); 
     }
+
+        
+}
 
     /**
      * Remove the specified resource from storage.

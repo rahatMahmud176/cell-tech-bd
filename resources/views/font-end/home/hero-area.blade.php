@@ -34,15 +34,17 @@
     <div class="col-lg-4 col-12">
     <div class="row">
        
+@foreach ($sliderBanners as $item)
+    
 
     <div class="col-lg-12 col-md-6 col-12 md-custom-padding"> 
-    <div class="hero-small-banner" style="background-image: url('{{ $sliderBanner->image }}');">
+    <div class="hero-small-banner" style="background-image: url('{{ $item->image }}');">
     <div class="content">
     <h2>
-    <span>{{ $sliderBanner->small_title }}</span>
-    {{ $sliderBanner->product_name }}
+    <span>{{ $item->small_title }}</span>
+    {{ $item->product_name }}
     </h2>
-    <h3>$ {{ $sliderBanner->price }}</h3>
+    <h3>$ {{ $item->price }}</h3>
     </div>
     </div> 
     </div>
@@ -51,15 +53,15 @@
     <div class="col-lg-12 col-md-6 col-12"> 
     <div class="hero-small-banner style2">
     <div class="content">
-    <h2>{{ $sliderBanner->header }}</h2>
-     <p>{{ $sliderBanner->description }}</p>
+    <h2>{{ $item->header }}</h2>
+     <p>{{ $item->description }}</p>
     <div class="button">
-    <a class="btn" href="{{ $sliderBanner->button_link }}">{{ $sliderBanner->button_text }}</a>
+    <a class="btn" href="{{ $item->button_link }}">{{ $item->button_text }}</a>
     </div>
     </div>
     </div> 
     </div>
-
+    @endforeach
 
     </div>
     </div>
