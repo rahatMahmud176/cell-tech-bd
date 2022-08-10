@@ -50,7 +50,7 @@
     <label for="color">Variant:</label>
     <select class="form-control" name="size_id" id="color">
         @foreach ($product->productSizes as $item)
-            <option value="{{ $item->sizes->title }}">{{ $item->sizes->title }}</option>
+            <option value="{{ $item->sizes->id }}">{{ $item->sizes->title }}</option>
         @endforeach 
     </select>
     </div>

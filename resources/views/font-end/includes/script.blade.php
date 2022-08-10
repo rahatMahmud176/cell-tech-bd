@@ -1,3 +1,6 @@
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{{ asset('/') }}font-end/assets/js/bootstrap.min.js"></script>
 <script src="{{ asset('/') }}font-end/assets/js/tiny-slider.js"></script>
 <script src="{{ asset('/') }}font-end/assets/js/glightbox.min.js"></script>
@@ -95,3 +98,23 @@
             });
         });
     </script>
+     <script>
+        $(document).on('change','.productQty', function(){
+             var id  = $(this).attr('data-id');
+             var qty = $(this).val();
+             //alert (qty);
+             $.ajax({
+                    type:'GET',
+                    url : "{{ url('cart/product-qty-change') }}",
+                    data: {id: id, qty: qty},
+                    dataType: 'json',
+                    success: function (res) {
+                        location.reload();
+                    }
+             });
+        });
+     </script>
+     @include('sweetalert::alert')
+
+
+   

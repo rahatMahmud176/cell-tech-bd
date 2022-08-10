@@ -21,7 +21,7 @@
     <form action="#" method="get" target="_blank" class="newsletter-form">
     <input name="EMAIL" placeholder="Email address here..." type="email">
     <div class="button">
-    <button class="btn">Subscribe<span class="dir-part"></span></button>
+    <button type="button" class="btn sbs">Subscribe<span class="dir-part"></span></button>
     </div>
     </form>
     </div>

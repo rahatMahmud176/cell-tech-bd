@@ -212,9 +212,37 @@ Route::get('product-details/{id}',[
     'as'       => 'product-details'
 ]); 
 Route::post('add-to-cart',[
-    'uses'     =>'App\Http\Controllers\ProductDetailsController@addToCart',
+    'uses'     =>'App\Http\Controllers\CartController@addToCart',
     'as'       => 'add-to-cart'
+]); 
+Route::get('cart/cart-view',[
+    'uses'     =>'App\Http\Controllers\CartController@cartView',
+    'as'       => 'cart-view'
 ]);
+Route::get('cart/remove-cart-product/{id}',[
+    'uses'     =>'App\Http\Controllers\CartController@removeCartProduct',
+    'as'       => 'remove-cart-product'
+]); 
+Route::get('cart/product-qty-change',[
+    'uses'     =>'App\Http\Controllers\CartController@cartQtyChange',
+    'as'       => 'product-qty-change'
+]); 
+
+
+Route::get('customer/log-in',[
+    'uses'     =>'App\Http\Controllers\CustomerController@loginPage',
+    'as'       => 'customer-login'
+]); 
+Route::get('customer/register',[
+    'uses'     =>'App\Http\Controllers\CustomerController@register',
+    'as'       => 'customer-register'
+]);
+
+
+
+
+
+
 
 
 Route::get('/image', function() {
