@@ -176,17 +176,17 @@ Route::get('spoBanner-delete/{id}',[
 
 
 
-Route::resource('sponeBanner', App\Http\Controllers\sponeBannerController::class); 
+Route::resource('sponeBanner', App\Http\Controllers\SponeBannerController::class); 
 Route::get('sponeBanner-status-change/{id}',[
-    'uses'  => 'App\Http\Controllers\sponeBannerController@sponeBannerStatusChange',
+    'uses'  => 'App\Http\Controllers\SponeBannerController@sponeBannerStatusChange',
     'as'    => 'sponeBanner-status-change'
 ]); 
 Route::get('sponeBanner.deleteAlert/{id}',[
-    'uses'  => 'App\Http\Controllers\sponeBannerController@bannerDeleteAlert',
+    'uses'  => 'App\Http\Controllers\SponeBannerController@bannerDeleteAlert',
     'as'    => 'sponeBanner.deleteAlert'
 ]);
 Route::get('sponeBanner-delete/{id}',[
-    'uses'  => 'App\Http\Controllers\sponeBannerController@bannerDelete',
+    'uses'  => 'App\Http\Controllers\SponeBannerController@bannerDelete',
     'as'    => 'sponeBanner-delete'
 ]);  
 
@@ -228,15 +228,58 @@ Route::get('cart/product-qty-change',[
     'as'       => 'product-qty-change'
 ]); 
 
+// =================customerLogedinMiddleware=========
+Route::middleware(['customerLogedinMiddleware'],)->group(function(){
 
-Route::get('customer/log-in',[
+Route::get('customer/login-form',[
     'uses'     =>'App\Http\Controllers\CustomerController@loginPage',
     'as'       => 'customer-login'
 ]); 
-Route::get('customer/register',[
+Route::get('customer/register-form',[
     'uses'     =>'App\Http\Controllers\CustomerController@register',
-    'as'       => 'customer-register'
+    'as'       => 'customer-register', 
 ]);
+
+Route::post('customer/new-customer',[
+    'uses'     =>'App\Http\Controllers\CustomerController@newCustomer',
+    'as'       => 'newCustomer'
+]);
+
+Route::post('customer/customer-login',[
+    'uses'     =>'App\Http\Controllers\CustomerController@customerLogin',
+    'as'       => 'customerLogin'
+]);
+
+});//customerLogedinMiddleware
+
+// =============cutomerDashboardMiddleware==================
+
+Route::middleware(['cutomerDashboardMiddleware'])->group(function(){
+    Route::get('customer/customer-logout',[
+        'uses'     =>'App\Http\Controllers\CustomerController@customerLogout',
+        'as'       => 'customerLogout'
+    ]);
+
+    Route::get('customer-cart/checkout-page',[
+        'uses'     =>'App\Http\Controllers\CustomerController@checkoutPage',
+        'as'       => 'checkout-page'
+    ]);
+    Route::post('customer-cart/advance-payment',[
+        'uses'     =>'App\Http\Controllers\CustomerController@advancePayment',
+        'as'       => 'advancePayment'
+    ]); 
+    Route::post('cart/submit-order',[
+        'uses'     =>'App\Http\Controllers\OrderController@orderSubmit',
+        'as'       => 'submitOrder'
+    ]);
+
+
+
+
+
+
+});//cutomerDashboardMiddleware
+
 
 
 

@@ -16,41 +16,52 @@
     <h3>No Account? Register</h3>
     <p>Registration takes less than a minute but gives you full control over your orders.</p>
     </div>
-    <form class="row" method="post">
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+     
+{{ Form::open(['class'=>'row','route'=>'newCustomer','method'=>'POST']) }}
     <div class="col-sm-6">
     <div class="form-group">
     <label for="reg-fn">First Name</label>
-    <input class="form-control" type="text" id="reg-fn" required>
+    <input name="first_name" maxlength="30" class="form-control" type="text" id="reg-fn" required>
     </div>
     </div>
     <div class="col-sm-6">
     <div class="form-group">
     <label for="reg-ln">Last Name</label>
-    <input class="form-control" type="text" id="reg-ln" required>
+    <input name="last_name" maxlength="30" class="form-control" type="text" id="reg-ln" required>
     </div>
     </div>
     <div class="col-sm-6">
     <div class="form-group">
     <label for="reg-email">E-mail Address</label>
-    <input class="form-control" type="email" id="reg-email" required>
+    <input name='email' class="form-control" type="email" id="reg-email" required>
     </div>
     </div>
     <div class="col-sm-6">
     <div class="form-group">
     <label for="reg-phone">Phone Number</label>
-    <input class="form-control" type="text" id="reg-phone" required>
+    <input name="phone_number" maxlength="11" minlength="11" class="form-control" type="tel" id="reg-phone" required>
     </div>
     </div>
     <div class="col-sm-6">
     <div class="form-group">
     <label for="reg-pass">Password</label>
-    <input class="form-control" type="password" id="reg-pass" required>
+    <input name="password" maxlength="30" minlength="3" class="form-control" type="password" id="reg-pass" required>
     </div>
     </div>
     <div class="col-sm-6">
     <div class="form-group">
     <label for="reg-pass-confirm">Confirm Password</label>
-    <input class="form-control" type="password" id="reg-pass-confirm" required>
+    <input name="password_confirmation" maxlength="30" minlength="3" class="form-control" type="password" id="reg-pass-confirm" required>
     </div>
     </div>
     <div class="button">
@@ -58,7 +69,7 @@
     </div>
     <p class="outer-link">Already have an account? <a href="{{ route('customer-login') }}">Login Now</a>
     </p>
-    </form>
+{{ Form::close() }}
     </div>
     </div>
     </div>

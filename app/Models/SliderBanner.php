@@ -21,7 +21,7 @@ public static function bannerBasicInfo($request)
     self::$directory = 'slider-banner-img/';
     
     if ($request->file('image')) {
-    self::$banner->image                 = imageUpload($request->file('image'),$request->title,self::$firstSize,self::$secondSize,self::$directory);
+    self::$banner->image                 = imageUpload($request->file('image'),$request->product_name,self::$firstSize,self::$secondSize,self::$directory);
     }
     self::$banner->product_name          = $request->product_name;
     self::$banner->small_title           = $request->small_title;

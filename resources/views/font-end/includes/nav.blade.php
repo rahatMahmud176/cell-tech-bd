@@ -60,15 +60,21 @@
 <div class="top-end">
 <div class="user">
 <i class="lni lni-user"></i>
-Hello
+{{ Session::get('customerFirstName') }} --
 </div>
 <ul class="user-login">
-<li>
-<a href="login.html">Sign In</a>
-</li>
-<li>
-<a href="register.html">Register</a>
-</li>
+@if (Session::get('customerId'))
+    <li>
+        <a class="text-danger" href="{{ route('customerLogout') }}">Logout</a>
+    </li>
+@else 
+    <li>
+        <a href="{{ route('customer-login') }}">Sign In</a>
+    </li>
+    <li>
+        <a href="{{ route('customer-register') }}">Register</a>
+    </li>
+@endif 
 </ul>
 </div>
 </div>
@@ -123,6 +129,8 @@ Hello
 <span>(+100) 123 456 7890</span>
 </h3>
 </div>
+
+{{-- 
 <div class="navbar-cart">
 <div class="wishlist">
 <a href="javascript:void(0)">
@@ -176,7 +184,7 @@ Apple Watch Series 6</a></h4>
 </div>
 
 </div>
-</div>
+</div> --}}
 </div>
 </div>
 </div>

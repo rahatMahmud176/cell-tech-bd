@@ -95,27 +95,23 @@
     <div class="total-amount">
     <div class="row">
     <div class="col-lg-8 col-md-6 col-12">
-    <div class="left">
-    <div class="coupon">
-     <form action="#" target="_blank">
-    <input name="Coupon" placeholder="Enter Your Coupon">
-    <div class="button">
-    <button class="btn">Apply Coupon</button>
-    </div>
-    </form>
-    </div>
-    </div>
+     
     </div>
     <div class="col-lg-4 col-md-6 col-12">
     <div class="right">
     <ul>
     <li>Cart Subtotal<span>{{ Cart::getSubTotal() }}\-</span></li>
-    <li>Shipping<span>Free</span></li>
-    <li>VAT:5%<span> {{ $vat = Cart::getSubTotal()*0.05 }}\-</span></li>
-    <li class="last">You Pay<span>{{ Cart::getSubTotal()+$vat }}\-</span></li>
+    <li>Shipping<span>{{ $shipping= 120+(Cart::getSubTotal()*0.01) }}\-</span></li>
+    {{-- <li>VAT:5%<span> {{ $vat = Cart::getSubTotal()*0.05 }}\-</span></li> --}}
+    <li class="last">You Pay<span>{{ Cart::getSubTotal() + $shipping }}\-</span></li>
     </ul>
     <div class="button">
-    <a href="{{ route('customer-login') }}" class="btn">Checkout</a>
+        @if (Session::get('customerId'))
+            <a href="{{ route('checkout-page') }}" class="btn">Checkout</a>
+        @else
+            <a href="{{ route('customer-login') }}" class="btn">Checkout</a> 
+        @endif
+    
     <a href="{{ route('/') }}" class="btn btn-alt">Continue shopping</a>
     </div>
     </div>

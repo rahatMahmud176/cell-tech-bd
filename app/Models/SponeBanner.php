@@ -16,7 +16,7 @@ class SponeBanner extends Model
         self::$sponebanner->title                   =$request->title;
         self::$sponebanner->description             =$request->description;
         if ($request->file('image')) {
-            self::$sponebanner->image               =imageUpload($request->file('image'),$request->header,512,600,'special-offer-one-banner-image/');
+            self::$sponebanner->image               =imageUpload($request->file('image'),$request->title,512,600,'special-offer-one-banner-image/');
         }
         self::$sponebanner->price                   =$request->price;
         self::$sponebanner->cut_price               =$request->cut_price;
