@@ -116,7 +116,7 @@ class SliderBannerController extends Controller
          Alert::error('Dleted','Deleted slider banner!');
          return redirect()->back();
     }
-    /**
+    /** a
      * Remove the specified resource from storage.
      *
      * @param  int  $id
