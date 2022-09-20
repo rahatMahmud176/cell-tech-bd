@@ -11,6 +11,7 @@ class SliderBannerController extends Controller
 {
 
     public $banner;
+    public $sliderBanner;
 
     /**
      * Display a listing of the resource.
@@ -109,7 +110,9 @@ class SliderBannerController extends Controller
     }
     public function sliderBannerDelete($id)
     {
-         SliderBanner::find($id)->delete();
+        $this->sliderBanner = SliderBanner::find($id);
+        unlink($this->sliderBanner->image);
+        $this->sliderBanner->delete();
          Alert::error('Dleted','Deleted slider banner!');
          return redirect()->back();
     }
