@@ -15,8 +15,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        return view('back-end.color.manage',[
-            'colors'    => Color::orderBy('id','desc')->get(),
+        return view('back-end.color.manage', [
+            'colors'    => Color::orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -39,7 +39,7 @@ class ColorController extends Controller
     public function store(Request $request)
     {
         Color::newColor($request);
-        Alert::success('Save','Color Save Successfully');
+        Alert::success('Save', 'Color Save Successfully');
         return redirect()->back();
     }
 
@@ -62,7 +62,7 @@ class ColorController extends Controller
      */
     public function edit($id)
     {
-        return view('back-end.color.edit',[
+        return view('back-end.color.edit', [
             'color'      => Color::find($id),
             'categories'    => Color::all()
         ]);
@@ -77,21 +77,20 @@ class ColorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
     }
 
     public function colorDeleteAlert($id)
     {
-        alert()->question('Are you sure?','You won\'t be able to revert this!')
-        ->showConfirmButton('<a href="color-delete/'.$id.'" style="color:white">Delete</a>', '#f22e02')->toHtml()
-        ->showCancelButton('Cancel', '#aaa')->reverseButtons();
+        alert()->question('Are you sure?', 'You won\'t be able to revert this!')
+            ->showConfirmButton('<a href="color-delete/' . $id . '" style="color:white">Delete</a>', '#f22e02')->toHtml()
+            ->showCancelButton('Cancel', '#aaa')->reverseButtons();
         return redirect()->back();
     }
     public function colorDelete($id)
     {
 
-        Color::find($id)->delete(); 
-        Alert::error('Dleted','Deleted Delevary Agent!');
+        Color::find($id)->delete();
+        Alert::error('Dleted', 'Deleted Color!');
         return redirect()->back();
     }
     /**

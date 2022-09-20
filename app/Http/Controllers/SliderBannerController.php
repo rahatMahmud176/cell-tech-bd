@@ -20,8 +20,8 @@ class SliderBannerController extends Controller
      */
     public function index()
     {
-        
-        return view('back-end.slider.slider-banner',[
+
+        return view('back-end.slider.slider-banner', [
             'sliderBanners'    => SliderBanner::all(),
         ]);
     }
@@ -46,13 +46,12 @@ class SliderBannerController extends Controller
     {
         $this->banner = SliderBanner::all()->count();
         if ($this->banner >= 3) {
-            toast('Maximum 3 Banner','error');
+            toast('Maximum 3 Banner', 'error');
         } else {
-        SliderBanner::newBanner($request); 
-        Alert::success('Save','New banner save success');
+            SliderBanner::newBanner($request);
+            Alert::success('Save', 'New banner save success');
         }
         return redirect()->back();
-       
     }
 
     /**
@@ -74,18 +73,18 @@ class SliderBannerController extends Controller
      */
     public function edit($id)
     {
-        $this->banner = SliderBanner::where('status',1)->get();
+        $this->banner = SliderBanner::where('status', 1)->get();
         foreach ($this->banner as $value) {
             $value->status = 0;
             $value->save();
         }
-        
+
 
         $this->banner = SliderBanner::find($id);
         $this->banner->status   = 1;
         $this->banner->save();
 
-        Alert::success('Done','Slider Banner Activate Success!');
+        Alert::success('Done', 'Slider Banner Activate Success!');
         return redirect()->back();
     }
 
@@ -103,9 +102,9 @@ class SliderBannerController extends Controller
 
     public function sliderBannerDeleteAlert($id)
     {
-        alert()->question('Are you sure?','You won\'t be able to revert this!')
-        ->showConfirmButton('<a href="slider-banner-delete/'.$id.'" style="color:white">Delete</a>', '#f22e02')->toHtml()
-        ->showCancelButton('Cancel', '#aaa')->reverseButtons();
+        alert()->question('Are you sure?', 'You won\'t be able to revert this!')
+            ->showConfirmButton('<a href="slider-banner-delete/' . $id . '" style="color:white">Delete</a>', '#f22e02')->toHtml()
+            ->showCancelButton('Cancel', '#aaa')->reverseButtons();
         return redirect()->back();
     }
     public function sliderBannerDelete($id)
@@ -113,8 +112,8 @@ class SliderBannerController extends Controller
         $this->sliderBanner = SliderBanner::find($id);
         unlink($this->sliderBanner->image);
         $this->sliderBanner->delete();
-         Alert::error('Dleted','Deleted slider banner!');
-         return redirect()->back();
+        Alert::error('Dleted', 'Deleted slider banner!');
+        return redirect()->back();
     }
     /** a
      * Remove the specified resource from storage.

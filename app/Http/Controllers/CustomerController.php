@@ -38,7 +38,7 @@ class CustomerController extends Controller
  {
     $this->customerInfoValidate($request);
     Customer::newCustomer($request);
-    return redirect('customer/checkout-page');
+    return redirect('customer-cart/checkout-page');
  }
 public function checkoutPage( )
 {
