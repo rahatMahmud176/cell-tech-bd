@@ -191,6 +191,10 @@ Route::post('add-to-cart', [
     'uses'     => 'App\Http\Controllers\CartController@addToCart',
     'as'       => 'add-to-cart'
 ]);
+Route::get('product-cart-add-single/{id}', [
+    'uses'     => 'App\Http\Controllers\CartController@addToCartSingle',
+    'as'       => 'product-cart-add-single'
+]);
 Route::get('cart/cart-view', [
     'uses'     => 'App\Http\Controllers\CartController@cartView',
     'as'       => 'cart-view'

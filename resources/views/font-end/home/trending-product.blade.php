@@ -20,7 +20,7 @@
                             </a>
 
                             <div class="button">
-                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to
+                                <a href="{{ route('product-cart-add-single',['id'=>$item->id]) }}" class="btn"><i class="lni lni-cart"></i> Add to
                                     Cart</a>
                             </div>
                         </div>
