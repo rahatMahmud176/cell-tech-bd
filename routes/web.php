@@ -4,9 +4,9 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Route;
 
 /* 
-
+hi
+this is 23-09-2022
 */
-
 
 
 Route::group(['middleware' => 'guest'], function () {
