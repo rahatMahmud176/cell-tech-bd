@@ -12,7 +12,7 @@ use App\Models\ProductSize;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
+use RealRashid\SweetAlert\Facades\Alert; 
 
 class ProductController extends Controller
 {

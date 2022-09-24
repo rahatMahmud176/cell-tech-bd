@@ -29,7 +29,7 @@
                                     <td><img src="{{ asset($item->image) }}" alt="" class="avatar-sm"></td>
                                     <td>
                                         <h5 class="text-truncate font-size-14"><span class="text-dark">{{ $item->title }} <span class="badge" style="background: {{ $item->status==1?'#47965f':'#fa320f' }}; color:white;">{{ $item->status==1?'published':'Unpublished' }}</span></span></h5>
-                                        <p class="text-muted mb-0">{{ $item->short_description }}</p>
+                                        <p class="text-muted mb-0">{{ Str::limit($item->short_description, 40)    }}</p>
                                     </td>
                                     <td>{{ $item->sell_price }}</td>
                                     <td>
