@@ -3,11 +3,7 @@
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Route;
 
-/* 
-hi
-this is 23-09-2022
-*/
-
+//   hi new installation
 
 Route::group(['middleware' => 'guest'], function () {
 
@@ -22,7 +18,6 @@ Route::group(['middleware' => 'guest'], function () {
         'as'       => 'register'
     ]);
 }); //
-
 
 
 
