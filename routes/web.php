@@ -3,7 +3,7 @@
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Route;
 
- 
+//  hi bro 
 
 Route::group(['middleware' => 'guest'], function () {
 
