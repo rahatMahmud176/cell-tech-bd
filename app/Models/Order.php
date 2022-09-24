@@ -5,6 +5,7 @@ namespace App\Models;
 use Session;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
@@ -27,7 +28,10 @@ public static function newOrder($request)
 }
 
 
-
+public function shipingInfo()
+{
+    return $this->belongsTo('App\Models\Shipping','id');
+}
 
 
 

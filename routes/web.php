@@ -168,6 +168,16 @@ Route::middleware([
         'uses'  => 'App\Http\Controllers\SponeBannerController@bannerDelete',
         'as'    => 'sponeBanner-delete'
     ]);
+
+    // ================orders routes========================
+    Route::get('all-orders', [
+        'uses'  => 'App\Http\Controllers\OrderController@allOrders',
+        'as'    => 'all-orders'
+    ]);
+
+
+
+
 });
 // =======================FontEnd Routes============================
 

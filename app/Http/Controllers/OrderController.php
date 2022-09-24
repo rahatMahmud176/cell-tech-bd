@@ -59,4 +59,24 @@ public function orderSubmit(Request $request)
 
        
 }
+
+public function allOrders()
+{
+     return view('back-end.orders.all-orders',[
+        'orders'    => Order::all()
+     ]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 }//
